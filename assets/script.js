@@ -89,3 +89,23 @@ $(document).ready(function () {
     alert("🎅 Ho Ho Ho! You have opened a magical gift!");
   });
 });
+function checkScroll() {
+  const elements = document.querySelectorAll('.animate-left, .animate-right');
+  const windowHeight = window.innerHeight;
+
+  elements.forEach((element) => {
+      const rect = element.getBoundingClientRect();
+      const isVisible = rect.top <= windowHeight - 100 && rect.bottom >= 100;
+
+      if (isVisible) {
+          element.classList.add('show');
+      } else {
+          element.classList.remove('show'); // Xóa khi cuộn ngược lên
+      }
+  });
+}
+
+// Gọi hàm khi cuộn trang
+window.addEventListener('scroll', checkScroll);
+
+
